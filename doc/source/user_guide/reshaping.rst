@@ -675,3 +675,43 @@ categorical operations
 .. ipython:: python
 
    pd.Categorical(x)
+
+
+Merging Sorted DataFrames Efficiently
+=====================================
+
+In many data processing scenarios, you may have multiple DataFrames that are already sorted by a common key column. Instead of concatenating and sorting them again, you can merge these sorted DataFrames efficiently using the ``pandas.merge_sorted`` function.
+
+This method performs a merge of multiple sorted DataFrames into a single sorted DataFrame by leveraging an O(n) merge algorithm, similar to the merge step in merge sort.
+
+----
+
+Function: ``pandas.merge_sorted(dfs, sort_column)``
+---------------------------------------------------
+
+**Parameters:**
+
+- **dfs** : list of DataFrames  
+  A list of pandas DataFrames. Each must be sorted by the specified ``sort_column``.
+
+- **sort_column** : str  
+  The column name on which all DataFrames are sorted, and which will be used to sort the merged result.
+
+**Returns:**
+
+- A single DataFrame containing all rows from the input DataFrames, merged and sorted by ``sort_column``.
+
+----
+
+Example
+-------
+
+```python
+import pandas as pd
+from pandas import merge_sorted
+
+df1 = pd.DataFrame({"id": [1, 3, 5], "value": ["A", "B", "C"]})
+df2 = pd.DataFrame({"id": [2, 4, 6], "value": ["D", "E", "F"]})
+
+merged_df = merge_sorted([df1, df2], sort_column="id")
+print(merged_df)
