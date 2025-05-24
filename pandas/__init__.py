@@ -112,6 +112,7 @@ from pandas.tseries.api import infer_freq
 from pandas.tseries import offsets
 
 from pandas.core.computation.api import eval
+from pandas.core.reshape.merge_sorted import merge_sorted
 
 from pandas.core.reshape.api import (
     concat,
@@ -128,6 +129,7 @@ from pandas.core.reshape.api import (
     from_dummies,
     cut,
     qcut,
+    merge_sorted
 )
 
 from pandas import api, arrays, errors, io, plotting, tseries
@@ -347,4 +349,5 @@ __all__ = [
     "tseries",
     "unique",
     "wide_to_long",
+    "merge_sorted"
 ]
